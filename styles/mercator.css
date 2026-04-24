@@ -1,0 +1,174 @@
+/* Mercator - AI Map Generator */
+
+.mercator-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 8px;
+}
+
+/* Prompt Section */
+.mercator-prompt-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mercator-row {
+  display: flex;
+  gap: 8px;
+}
+
+.mercator-half {
+  flex: 1;
+}
+
+.mercator-prompt-group textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 60px;
+  font-family: inherit;
+  font-size: 13px;
+  padding: 8px;
+}
+
+.mercator-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.mercator-actions button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.mercator-actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Map Configuration Fieldset */
+.mercator-fieldset {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  padding: 8px;
+  margin: 0;
+}
+
+.mercator-fieldset legend {
+  font-size: 13px;
+  font-weight: bold;
+  padding: 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mercator-fieldset .form-group {
+  margin-bottom: 4px;
+}
+
+.mercator-fieldset label {
+  font-size: 11px;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.mercator-fieldset select {
+  width: 100%;
+  font-size: 12px;
+}
+
+.mercator-fieldset select[multiple] {
+  width: 100%;
+  min-height: 80px;
+}
+
+/* Status */
+.mercator-status {
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mercator-status.info {
+  background: rgba(100, 150, 255, 0.15);
+  border: 1px solid rgba(100, 150, 255, 0.3);
+  color: #a0c4ff;
+}
+
+.mercator-status.success {
+  background: rgba(100, 255, 150, 0.15);
+  border: 1px solid rgba(100, 255, 150, 0.3);
+  color: #a0ffc4;
+}
+
+.mercator-status.error {
+  background: rgba(255, 100, 100, 0.15);
+  border: 1px solid rgba(255, 100, 100, 0.3);
+  color: #ffa0a0;
+}
+
+/* Preview Section */
+.mercator-preview-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mercator-preview {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  overflow: hidden;
+  background: #000;
+}
+
+.mercator-preview img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.mercator-metadata {
+  font-size: 12px;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.mercator-metadata p {
+  margin: 2px 0;
+}
+
+/* Vision Toggle */
+.mercator-vision-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.mercator-vision-toggle label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.mercator-vision-toggle .mercator-hint {
+  font-size: 11px;
+  opacity: 0.7;
+}

@@ -1,0 +1,27 @@
+{
+  "id": "mercator",
+  "title": "Mercator - AI Map Generator",
+  "description": "Generate Foundry VTT battle maps from natural language prompts using AI. Supports multiple image generation providers and uses Claude for intelligent prompt refinement.",
+  "version": "0.1.0",
+  "authors": [
+    {
+      "name": "beef"
+    }
+  ],
+  "compatibility": {
+    "minimum": "13.0",
+    "verified": "13.341"
+  },
+  "manifest": "https://raw.githubusercontent.com/colpepe/mercator/main/module.json",
+  "download": "https://github.com/colpepe/mercator/archive/refs/heads/main.zip",
+  "url": "https://github.com/colpepe/mercator",
+  "esmodules": ["scripts/module.mjs"],
+  "styles": ["styles/mercator.css"],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ]
+}

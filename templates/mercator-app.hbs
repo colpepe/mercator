@@ -1,0 +1,196 @@
+<div class="mercator-container">
+  {{!-- Scene Name --}}
+  <div class="mercator-prompt-section">
+    <div class="form-group">
+      <label for="mercator-scene-name">
+        <i class="fas fa-tag"></i> {{localize "mercator.app.sceneName.label"}}
+      </label>
+      <input type="text" id="mercator-scene-name" name="sceneName"
+             value="{{sceneName}}"
+             placeholder="{{localize 'mercator.app.sceneName.placeholder'}}" />
+    </div>
+
+    {{!-- Provider + Map Size --}}
+    <div class="mercator-row">
+      <div class="form-group mercator-half">
+        <label for="mercator-provider">
+          <i class="fas fa-cog"></i> {{localize "mercator.app.provider.label"}}
+        </label>
+        <select id="mercator-provider" name="provider">
+          <option value="stability" {{#if (eq provider "stability")}}selected{{/if}}>Stability AI</option>
+          <option value="openai" {{#if (eq provider "openai")}}selected{{/if}}>OpenAI (DALL-E)</option>
+          <option value="comfyui" {{#if (eq provider "comfyui")}}selected{{/if}}>ComfyUI (Local)</option>
+        </select>
+      </div>
+
+      <div class="form-group mercator-half">
+        <label for="mercator-map-size">
+          <i class="fas fa-ruler-combined"></i> Map Size
+        </label>
+        <select id="mercator-map-size" name="mapSize">
+          <option value="small" {{#if (eq mapSize "small")}}selected{{/if}}>Small (16x12 sq)</option>
+          <option value="medium" {{#if (eq mapSize "medium")}}selected{{/if}}>Medium (24x18 sq)</option>
+          <option value="large" {{#if (eq mapSize "large")}}selected{{/if}}>Large (32x24 sq)</option>
+        </select>
+      </div>
+    </div>
+
+    {{!-- Map Configuration --}}
+    <fieldset class="mercator-fieldset">
+      <legend>
+        <i class="fas fa-sliders"></i> {{localize "mercator.app.mapConfig.label"}}
+      </legend>
+
+      {{!-- Row 1: Biome + Layout --}}
+      <div class="mercator-row">
+        <div class="form-group mercator-half">
+          <label><i class="fas fa-tree"></i> {{localize "mercator.app.biome.label"}}</label>
+          <select id="mercator-biome">
+            {{#each biomes}}
+            <option value="{{@key}}" {{#if (eq @key ../biome)}}selected{{/if}}>{{this.label}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="form-group mercator-half">
+          <label><i class="fas fa-border-all"></i> {{localize "mercator.app.layout.label"}}</label>
+          <select id="mercator-layout">
+            {{#each layouts}}
+            <option value="{{@key}}" {{#if (eq @key ../layout)}}selected{{/if}}>{{this.label}}</option>
+            {{/each}}
+          </select>
+        </div>
+      </div>
+
+      {{!-- Row 2: Encounter + Density --}}
+      <div class="mercator-row">
+        <div class="form-group mercator-half">
+          <label><i class="fas fa-crosshairs"></i> {{localize "mercator.app.encounter.label"}}</label>
+          <select id="mercator-encounter">
+            {{#each encounterTypes}}
+            <option value="{{@key}}" {{#if (eq @key ../encounterType)}}selected{{/if}}>{{this.label}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="form-group mercator-half">
+          <label><i class="fas fa-cubes"></i> {{localize "mercator.app.density.label"}}</label>
+          <select id="mercator-density">
+            {{#each densityOptions}}
+            <option value="{{@key}}" {{#if (eq @key ../density)}}selected{{/if}}>{{this.label}}</option>
+            {{/each}}
+          </select>
+        </div>
+      </div>
+
+      {{!-- Row 3: Time + Weather --}}
+      <div class="mercator-row">
+        <div class="form-group mercator-half">
+          <label><i class="fas fa-clock"></i> {{localize "mercator.app.time.label"}}</label>
+          <select id="mercator-time">
+            {{#each timesOfDay}}
+            <option value="{{@key}}" {{#if (eq @key ../timeOfDay)}}selected{{/if}}>{{this.label}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="form-group mercator-half">
+          <label><i class="fas fa-cloud"></i> {{localize "mercator.app.weather.label"}}</label>
+          <select id="mercator-weather">
+            {{#each weatherOptions}}
+            <option value="{{@key}}" {{#if (eq @key ../weather)}}selected{{/if}}>{{this.label}}</option>
+            {{/each}}
+          </select>
+        </div>
+      </div>
+
+      {{!-- Row 4: Season + Elevation --}}
+      <div class="mercator-row">
+        <div class="form-group mercator-half">
+          <label><i class="fas fa-leaf"></i> {{localize "mercator.app.season.label"}}</label>
+          <select id="mercator-season">
+            {{#each seasons}}
+            <option value="{{@key}}" {{#if (eq @key ../season)}}selected{{/if}}>{{this.label}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="form-group mercator-half">
+          <label><i class="fas fa-mountain"></i> {{localize "mercator.app.elevation.label"}}</label>
+          <select id="mercator-elevation">
+            {{#each elevationOptions}}
+            <option value="{{@key}}" {{#if (eq @key ../elevation)}}selected{{/if}}>{{this.label}}</option>
+            {{/each}}
+          </select>
+        </div>
+      </div>
+
+      {{!-- Row 5: Points of Interest (multi-select) --}}
+      <div class="form-group">
+        <label><i class="fas fa-map-pin"></i> {{localize "mercator.app.poi.label"}}</label>
+        <select id="mercator-poi" multiple size="4">
+          {{#each pointsOfInterest}}
+          <option value="{{@key}}">{{this.label}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </fieldset>
+
+    {{!-- Free-text prompt --}}
+    <div class="form-group mercator-prompt-group">
+      <label for="mercator-prompt">
+        <i class="fas fa-pen"></i> {{localize "mercator.app.prompt.label"}}
+      </label>
+      <textarea id="mercator-prompt" name="prompt" rows="3"
+                placeholder="{{localize 'mercator.app.prompt.placeholder'}}"
+                {{#if generating}}disabled{{/if}}>{{prompt}}</textarea>
+    </div>
+
+    <div class="mercator-actions">
+      <button type="button" data-action="generate" {{#if generating}}disabled{{/if}}>
+        {{#if generating}}
+          <i class="fas fa-spinner fa-spin"></i>
+        {{else}}
+          <i class="fas fa-wand-magic-sparkles"></i>
+        {{/if}}
+        {{localize "mercator.app.button.generate"}}
+      </button>
+    </div>
+  </div>
+
+  {{!-- Status --}}
+  {{#if status}}
+  <div class="mercator-status {{statusClass}}">
+    <i class="fas {{statusIcon}}"></i> {{status}}
+  </div>
+  {{/if}}
+
+  {{!-- Preview Section --}}
+  {{#if previewUrl}}
+  <div class="mercator-preview-section">
+    <div class="mercator-preview">
+      <img src="{{previewUrl}}" alt="Generated map preview" />
+    </div>
+
+    {{#if metadata}}
+    <div class="mercator-metadata">
+      <p><strong>Scene:</strong> {{metadata.sceneName}}</p>
+      <p><strong>Size:</strong> {{metadata.width}}x{{metadata.height}}px (grid: {{metadata.gridSize}}px/sq)</p>
+      <p><strong>Description:</strong> {{metadata.description}}</p>
+    </div>
+    {{/if}}
+
+    {{!-- Vision toggle --}}
+    <div class="mercator-vision-toggle">
+      <label>
+        <input type="checkbox" id="mercator-vision" {{#if visionEnabled}}checked{{/if}} />
+        <i class="fas fa-eye"></i> {{localize "mercator.app.vision.label"}}
+      </label>
+      <span class="mercator-hint">{{localize "mercator.app.vision.hint"}}</span>
+    </div>
+
+    <div class="mercator-actions">
+      <button type="button" data-action="createScene">
+        <i class="fas fa-map"></i>
+        {{localize "mercator.app.button.createScene"}}
+      </button>
+    </div>
+  </div>
+  {{/if}}
+</div>

@@ -1,0 +1,78 @@
+<section class="mercator-settings">
+  <h3><i class="fas fa-robot"></i> LLM (Prompt Refinement)</h3>
+
+  <div class="form-group">
+    <label for="ollamaUrl">Ollama Server URL</label>
+    <input type="text" name="ollamaUrl" value="{{ollamaUrl}}"
+           placeholder="http://localhost:11434" />
+    <p class="notes">URL of your local Ollama instance.</p>
+  </div>
+
+  <div class="form-group">
+    <label for="ollamaModel">Ollama Model</label>
+    <input type="text" name="ollamaModel" value="{{ollamaModel}}"
+           placeholder="llama3.1:8b" />
+    <p class="notes">Model name (e.g., llama3.1:8b, mistral, gemma2).</p>
+  </div>
+
+  <div class="form-group">
+    <label for="apiKeyAnthropic">
+      <i class="fas fa-brain"></i> Anthropic API Key
+    </label>
+    <input type="password" name="apiKeyAnthropic" value="{{apiKeyAnthropic}}"
+           placeholder="sk-ant-..." autocomplete="off" />
+    <p class="notes">Only needed if using Claude as LLM provider.</p>
+  </div>
+
+  <hr />
+  <h3><i class="fas fa-image"></i> Image Generation</h3>
+
+  <div class="form-group">
+    <label for="apiKeyStability">Stability AI API Key</label>
+    <input type="password" name="apiKeyStability" value="{{apiKeyStability}}"
+           placeholder="sk-..." autocomplete="off" />
+    <p class="notes">For Stability AI image generation (SDXL / SD3).</p>
+  </div>
+
+  <div class="form-group">
+    <label for="apiKeyOpenai">OpenAI API Key</label>
+    <input type="password" name="apiKeyOpenai" value="{{apiKeyOpenai}}"
+           placeholder="sk-..." autocomplete="off" />
+    <p class="notes">For DALL-E image generation.</p>
+  </div>
+
+  <div class="form-group">
+    <label for="comfyuiUrl">ComfyUI Server URL</label>
+    <input type="text" name="comfyuiUrl" value="{{comfyuiUrl}}"
+           placeholder="http://localhost:8188" />
+    <p class="notes">URL of your local ComfyUI instance.</p>
+  </div>
+
+  <div class="form-group">
+    <label for="fluxCheckpoint">Flux Checkpoint</label>
+    <input type="text" name="fluxCheckpoint" value="{{fluxCheckpoint}}"
+           placeholder="flux1-dev.safetensors" />
+    <p class="notes">Filename in ComfyUI models/checkpoints/.</p>
+  </div>
+
+  <div class="form-group">
+    <label for="doraName">RPGmap DoRA</label>
+    <input type="text" name="doraName" value="{{doraName}}"
+           placeholder="rpg_maps_dora_v5.safetensors" />
+    <p class="notes">Filename in ComfyUI models/loras/.</p>
+  </div>
+
+  <hr />
+  <h3><i class="fas fa-eye"></i> Vision Analysis</h3>
+
+  <div class="form-group">
+    <label for="visionModel">Vision Model</label>
+    <input type="text" name="visionModel" value="{{visionModel}}"
+           placeholder="llama3.2-vision:latest" />
+    <p class="notes">Ollama vision model for optional map analysis (e.g., llama3.2-vision:latest).</p>
+  </div>
+
+  <footer class="form-footer">
+    <button type="submit"><i class="fas fa-save"></i> Save</button>
+  </footer>
+</section>
